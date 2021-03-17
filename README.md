@@ -70,7 +70,7 @@ in a frame-by-frame comparison to determine when the person is falling.
  
 ## Execution
 
-- Please set ALARM_TEXT in settings file with the alarm text as you want and connect web camera to the pc.
+- Please set ALARM_TEXT and IP_CAM_ADDRESS in settings file with the alarm text and ip camera address as you want.
 
 - Please run the following command in the terminal.
 
