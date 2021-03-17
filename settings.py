@@ -32,5 +32,5 @@ POSE_PAIRS = [
 
 ALARM_TEXT = "Fall Detected!"
 
-WEB_CAM = True
+IP_CAM_ADDRESS = ""
 VIDEO_FILE_PATH = ""

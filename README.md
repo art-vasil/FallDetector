@@ -64,6 +64,7 @@ in a frame-by-frame comparison to determine when the person is falling.
     ```
         sudo apt install libespeak1
         sudo apt-get install libboost-dev libboost-log-dev
+        sudo apt-get install -y libasound2-dev
         pip3 install -r requirements.txt         
     ```
  

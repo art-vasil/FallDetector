@@ -7,7 +7,7 @@ import cv2
 import simpleaudio as sa
 from openvino.inference_engine import IENetwork, IEPlugin
 from src.alarm.player import AlarmPlayer
-from settings import JOINT_COLORS, POSE_POINTS_NUMBER, POSE_PAIRS, MODEL_DIR, WEB_CAM, VIDEO_FILE_PATH
+from settings import JOINT_COLORS, POSE_POINTS_NUMBER, POSE_PAIRS, MODEL_DIR, IP_CAM_ADDRESS, VIDEO_FILE_PATH
 
 
 class FallDetector:
@@ -58,8 +58,8 @@ class FallDetector:
         # Read and pre-process input image
         n, c, h, w = self.net.inputs[input_blob].shape
         del self.net
-        if WEB_CAM:
-            cap = cv2.VideoCapture(0)
+        if video_file_path == "":
+            cap = cv2.VideoCapture(IP_CAM_ADDRESS)
         else:
             cap = cv2.VideoCapture(video_file_path)
             assert os.path.isfile(video_file_path), "Specified input file doesn't exist"
