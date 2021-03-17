@@ -65,7 +65,9 @@ class FallDetector:
             assert os.path.isfile(video_file_path), "Specified input file doesn't exist"
 
         # Grab the shape of the input
+        width = int(cap.get(3))
         height = int(cap.get(4))
+        print(f"[INFO] Width: {width}, Height: {height}")
         fps = cap.get(cv2.CAP_PROP_FPS)
         font_scale = round(height / 360)
         font_thickness = round(3 * font_scale)
@@ -168,7 +170,7 @@ class FallDetector:
             if cnt % 50 == 0:
                 self.sound_ret = True
 
-            cv2.imshow("Fall Detection", frame)
+            cv2.imshow("Fall Detection", cv2.resize(frame, None, fx=0.5, fy=0.5))
             cur_request_id, next_request_id = next_request_id, cur_request_id
             frame = next_frame
 
