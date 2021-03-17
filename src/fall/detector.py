@@ -1,5 +1,6 @@
 import logging as log
 import os
+import time
 import sys
 import threading
 import cv2
@@ -69,6 +70,7 @@ class FallDetector:
         height = int(cap.get(4))
         print(f"[INFO] Width: {width}, Height: {height}")
         fps = cap.get(cv2.CAP_PROP_FPS)
+        print(f"[INFO] FPS: {fps}")
         font_scale = round(height / 360)
         font_thickness = round(3 * font_scale)
 
@@ -90,6 +92,7 @@ class FallDetector:
         cnt = 0
 
         while cap.isOpened():
+            st_time = time.time()
             ret, next_frame = cap.read()
             if not ret:
                 break
@@ -173,6 +176,7 @@ class FallDetector:
             cv2.imshow("Fall Detection", cv2.resize(frame, None, fx=0.5, fy=0.5))
             cur_request_id, next_request_id = next_request_id, cur_request_id
             frame = next_frame
+            print(f"[INFO] Processing Time: {time.time() - st_time}")
 
             # Increment frame number
             frame_number += 1
